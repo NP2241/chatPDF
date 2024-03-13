@@ -1,0 +1,39 @@
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+h1, h2, h3 {
+    color: #f0f0f0;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    color: #ddd;
+}
+
+input[type="text"], input[type="file"], input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #bbb;
+}

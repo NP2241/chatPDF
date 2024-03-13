@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatPDF Interface</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<h1>ChatPDF Interface</h1>
+
+{% if source_id %}
+<!-- If a source ID is available, display PDF uploaded message -->
+<h2>PDF Uploaded Successfully!</h2>
+<p>File Path: {{ file_path }}</p>
+<!-- Form for asking a question -->
+<form action="{{ url_for('ask', source_id=source_id) }}" method="post">
+    <label for="question">Ask a question:</label><br>
+    <input type="text" id="question" name="question"><br>
+    <input type="submit" value="Ask">
+</form>
+
+{% if answer %}
+<!-- Display answer if available -->
+<h3>Answer:</h3>
+<p>{{ answer }}</p>
+{% endif %}
+
+{% if page_references %}
+<!-- Display page references if available -->
+<h3>Page References:</h3>
+<ul>
+    {% for reference in page_references %}
+    <li>[P{{ reference }}]</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<!-- Add button to go back to the root URL -->
+<a href="/">Upload Another PDF</a>
+
+{% else %}
+<!-- If no source ID is available, display upload form -->
+<h2>Upload a PDF File</h2>
+<form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".pdf"><br><br>
+    <input type="submit" value="Upload">
+</form>
+{% endif %}
+
+</body>
+</html>
